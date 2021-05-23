@@ -53,7 +53,11 @@ class MyApp extends StatelessWidget {
       ),
       home: HomePage(list, database, database2),
       routes: {
-        AboutUs.route: (_) => AboutUs(),
+        AboutUs.route: (_) => AboutUs(
+              database: database,
+              database2: database2,
+              list: list,
+            ),
       },
     );
   }
