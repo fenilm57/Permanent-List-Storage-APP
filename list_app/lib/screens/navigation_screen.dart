@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:list_app/list_function.dart';
 import 'package:list_app/models/list.dart';
 import 'package:list_app/screens/aboutus_screen.dart';
 import 'package:list_app/screens/single_list_screen.dart';
@@ -144,6 +145,9 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
                                   TextButton(
                                     onPressed: () async {
                                       await deleteList(tempList[index].id);
+                                      ListFunction(
+                                              widget.database, widget.database2)
+                                          .deleteTextListWhole(index);
                                       Navigator.pushReplacementNamed(
                                           context, HomePage.routeName);
                                       //SnackBar

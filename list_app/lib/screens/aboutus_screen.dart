@@ -25,18 +25,21 @@ class AboutUs extends StatelessWidget {
               ),
               height: 300,
               child: Image.asset(
-                'images/list.jpg',
+                'images/list.jpeg',
               ),
             ),
             SizedBox(
               height: 20,
             ),
-            Text(
-              'To My Family',
-              style: TextStyle(
-                fontSize: 40,
-                color: Colors.yellow,
-                fontWeight: FontWeight.bold,
+            Center(
+              child: Text(
+                'To World\'s',
+                style: TextStyle(
+                  fontSize: 40,
+                  color: Colors.yellow,
+                  fontWeight: FontWeight.bold,
+                ),
+                textAlign: TextAlign.center,
               ),
             ),
             SizedBox(

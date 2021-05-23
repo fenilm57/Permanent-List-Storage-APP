@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:list_app/list_function.dart';
 import 'package:list_app/models/const.dart';
 import 'package:list_app/models/list.dart';
@@ -45,7 +46,7 @@ class _HomePageState extends State<HomePage> {
                 child: Text('No'),
               ),
               TextButton(
-                onPressed: () => Navigator.pop(context, true),
+                onPressed: () => SystemNavigator.pop(),
                 child: Text('Yes'),
               )
             ],
@@ -118,7 +119,7 @@ class _HomePageState extends State<HomePage> {
                                   .validateTextField(_titleController.text);
                             });
                             if (_validate == false) {
-                              ListFunction(widget.database)
+                              ListFunction(widget.database, widget.database2)
                                   .addList(widget.list, _titleController.text);
                               ScaffoldMessenger.of(context)
                                   .showSnackBar(snackBar);

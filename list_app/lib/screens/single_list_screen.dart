@@ -119,13 +119,13 @@ class _SingleListState extends State<SingleList> {
   }
 
 //delete
-  Future<void> deleteTextList() async {
+  Future<void> deleteTextList(int ind) async {
     final db = await widget.database2;
 
     await db.delete(
       'listtext',
-      where: 'checked = ?',
-      whereArgs: [1],
+      where: 'checked = ? AND ind = ?',
+      whereArgs: [1, ind],
     );
   }
 
@@ -174,7 +174,7 @@ class _SingleListState extends State<SingleList> {
                     onPressed: () async {
                       //Delete Text from List
 
-                      await deleteTextList();
+                      await deleteTextList(widget.index);
 
                       setState(() {
                         display();
@@ -229,9 +229,9 @@ class _SingleListState extends State<SingleList> {
               child: Text(
                 'No List Yet For ${title[0].toUpperCase()}${title.substring(1)}!',
                 style: TextStyle(
-                  fontSize: 40,
-                  fontWeight: FontWeight.bold,
-                ),
+                    fontSize: 40,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white),
                 textAlign: TextAlign.center,
               ),
             )

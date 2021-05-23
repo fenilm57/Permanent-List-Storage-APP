@@ -4,7 +4,8 @@ import 'package:sqflite/sqflite.dart';
 
 class ListFunction {
   final Future<Database> database;
-  ListFunction(this.database);
+  final Future<Database> database2;
+  ListFunction(this.database, this.database2);
 
   void addList(List<ListData> list, String title) async {
     final addList = ListData(
@@ -21,6 +22,16 @@ class ListFunction {
       'lists',
       list.toMap(),
       conflictAlgorithm: ConflictAlgorithm.replace,
+    );
+  }
+
+  Future<void> deleteTextListWhole(int index) async {
+    final db = await database2;
+
+    await db.delete(
+      'listtext',
+      where: 'ind = ?',
+      whereArgs: [index],
     );
   }
 }
